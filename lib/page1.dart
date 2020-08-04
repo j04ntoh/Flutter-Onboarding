@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mvc/utils/assets.dart';
 import 'package:flutter_mvc/Onboarding/dot_indicator.dart';
+import 'package:smooth_star_rating/smooth_star_rating.dart';
 
 class Page1 extends StatelessWidget {
+  var rating = 3.0;
+
   @override
   Widget build(BuildContext context) {
     return new Container(
@@ -48,6 +51,23 @@ class Page1 extends StatelessWidget {
                 Text('Workout anywhere without any equipment!',
                   style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
                   textAlign: TextAlign.center,
+                ),
+                SmoothStarRating(
+                  rating: rating,
+                  isReadOnly: false,
+                  size: 60,
+                  filledIconData: Icons.star,
+                  //halfFilledIconData: Icons.star_half,
+                  defaultIconData: Icons.star_border,
+                  starCount: 5,
+                  allowHalfRating: false,
+                  spacing: 2.0,
+                  color: Colors.black38,
+                  borderColor: Colors.black26,
+                  onRated: (value) {
+                    print("rating value -> $value");
+                    // print("rating value dd -> ${value.truncate()}");
+                  },
                 )
               ],
             ),
